@@ -12,7 +12,7 @@
 
 ## Data
 
-Olist 공개 데이터의 9개 CSV를 사용했습니다.
+발표자료 기준 프로젝트 데이터셋은 **9개 CSV**로 구성되어 있었습니다.
 
 - Customers
 - Payments
@@ -22,7 +22,9 @@ Olist 공개 데이터의 9개 CSV를 사용했습니다.
 - Orders
 - Products
 - Sellers
-- Category Name
+- Category Name Translation
+
+복구된 원본 notebook과 공개 cleaned notebook은 분석에 직접 필요한 **8개 테이블(Customers, Geolocation, Order Items, Payments, Reviews, Orders, Products, Sellers)**을 로드합니다. 카테고리명은 notebook 내부 매핑으로 처리했기 때문에 별도 translation CSV를 직접 읽지 않습니다.
 
 ## Data Validation & Preprocessing
 
