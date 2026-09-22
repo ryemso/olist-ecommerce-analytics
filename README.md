@@ -2,7 +2,7 @@
 
 브라질 전자상거래 플랫폼 Olist의 2016–2018 공개 데이터를 이용해 **Seller 확보, 고객 유지, 배송 운영 문제**를 분석한 팀 프로젝트입니다.
 
-이 저장소는 당시 발표자료와 분석 기록을 바탕으로, 면접·코드리뷰에서 분석 흐름을 빠르게 확인할 수 있도록 재구성했습니다.
+이 저장소는 당시 발표자료와 **복구된 원본 분석 notebook**을 바탕으로, 면접·코드리뷰에서 분석 흐름과 실제 코드를 함께 확인할 수 있도록 재구성했습니다.
 
 ## Business Questions
 
@@ -135,11 +135,26 @@ Seller 수와 Order Count의 관계를 확인했고, 발표자료에는 **Pearso
 
 자세한 분석 맥락: [Business Insights](./docs/business-insights.md)
 
+## Reviewable Code
+
+- [Cleaned Analysis Notebook](./notebooks/01_olist_analysis.ipynb) — 복구된 원본 notebook의 데이터 로딩·merge·배송/리뷰 EDA 흐름을 정리
+- [Preprocessing Pipeline](./src/preprocessing.py) — 원본 전처리 로직을 함수 단위로 재구성하고 payment 중복 위험을 보완
+
+원본 notebook에서는 payment 행을 order/item과 직접 merge하는 실험도 수행했습니다. 정리된 pipeline은 주문당 payment를 먼저 집계해 n:n 증식 위험을 줄였습니다.
+
 ## Repository Structure
 
 ```text
 .
 ├── README.md
+├── requirements.txt
+├── .gitignore
+├── data/
+│   └── README.md
+├── notebooks/
+│   └── 01_olist_analysis.ipynb
+├── src/
+│   └── preprocessing.py
 └── docs/
     ├── business-insights.md
     └── data-processing.md
@@ -155,5 +170,6 @@ Seller 수와 Order Count의 관계를 확인했고, 발표자료에는 **Pearso
 
 ## Source Note
 
-현재 확인 가능한 원본은 발표자료 PDF입니다.  
-분석 코드 원본은 확인되지 않아, 이 저장소는 **발표자료가 실제로 지원하는 내용만 Case Study 형태로 정리**했습니다.
+프로젝트 발표자료와 함께 **실제 Olist CSV를 불러와 전처리·merge·EDA를 수행한 원본 notebook을 복구**했습니다.
+
+공개 repository에는 원본 실행 출력과 임시 셀을 그대로 복사하지 않고, 실제 분석 로직을 확인할 수 있는 cleaned notebook과 reviewable pipeline을 정리했습니다. 원본 CSV는 저장소에 포함하지 않습니다.
